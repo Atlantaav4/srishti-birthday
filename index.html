@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Srishti 🎂</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="bg"></div>
+  <div class="glow"></div>
+
+  <!-- Floating balloons -->
+  <div class="balloons" aria-hidden="true">
+    <span class="balloon b1"></span>
+    <span class="balloon b2"></span>
+    <span class="balloon b3"></span>
+    <span class="balloon b4"></span>
+    <span class="balloon b5"></span>
+  </div>
+
+  <main class="app">
+    <header class="topbar">
+      <h1>🎉 Happy Birthday <span class="name">Srishti</span> 🎉</h1>
+      <p class="sub">Enable mic and blow to turn off the candles 💨🕯</p>
+    </header>
+
+    <section class="stage">
+      <div class="cake-wrap">
+        <div class="cake">
+          <div class="plate"></div>
+
+          <div class="layer layer-1"><div class="icing drip"></div></div>
+          <div class="layer layer-2"><div class="icing drip"></div></div>
+          <div class="layer layer-3"><div class="icing top"></div></div>
+
+          <!-- PHOTO ON CAKE -->
+          <div class="photo-frame">
+            <img id="cakePhoto" alt="Photo" />
+            <div class="photo-glass"></div>
+          </div>
+
+          <div class="cake-name">SRISHTI</div>
+
+          <div class="candles" id="candles"></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="startMic" class="btn primary">🎙 Enable Mic</button>
+        <button id="relight" class="btn">🔥 Relight Candles</button>
+        <button id="openLetter" class="btn">💌 Open Letter</button>
+        <button id="musicBtn" class="btn">🎶 Play Music</button>
+
+        <!-- Upload photo -->
+        <label class="btn upload">
+          📸 Add Photo
+          <input id="photoInput" type="file" accept="image/*" hidden />
+        </label>
+      </div>
+
+      <div class="meter">
+        <div class="meter-label">Blow Power</div>
+        <div class="meter-bar">
+          <div class="meter-fill" id="meterFill"></div>
+        </div>
+        <div class="meter-tip">Tip: blow near mic like “phoooo”</div>
+      </div>
+    </section>
+
+    <!-- Letter Modal -->
+    <div class="modal" id="modal">
+      <div class="modal-card">
+        <div class="modal-head">
+          <h2>💌 Letter for Srishti</h2>
+          <button class="close" id="closeModal">✖</button>
+        </div>
+
+        <div class="modal-body">
+          <p class="mini">
+            ✍ Write your message. Click “Typewriter Preview” to show it beautifully.
+          </p>
+
+          <textarea id="letterInput" spellcheck="false"></textarea>
+
+          <!-- Typewriter preview -->
+          <div class="preview-wrap">
+            <div class="preview-title">✨ Typewriter Preview</div>
+            <div id="typePreview" class="type-preview"></div>
+          </div>
+
+          <div class="signature">— <b>Alen</b></div>
+        </div>
+
+        <div class="modal-actions">
+          <button id="typeBtn" class="btn">⌨ Typewriter Preview</button>
+          <button id="resetLetter" class="btn">♻ Reset</button>
+          <button id="confetti" class="btn primary">🎊 Confetti</button>
+        </div>
+      </div>
+    </div>
+
+    <canvas id="confettiCanvas"></canvas>
+
+    <!-- Music -->
+    <audio id="music" loop>
+      <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_2d1b2a4e02.mp3" type="audio/mpeg">
+    </audio>
+  </main>
+
+  <script src="script.js"></script>
+
+  <!-- small extra css for photo + typewriter preview -->
+  <style>
+    .photo-frame{
+      position:absolute;
+      left:50%;
+      bottom: 140px;
+      transform: translateX(-50%) translateZ(65px);
+      width: 110px;
+      height: 110px;
+      border-radius: 18px;
+      overflow:hidden;
+      border: 2px solid rgba(255,255,255,.22);
+      box-shadow: 0 20px 50px rgba(0,0,0,.45);
+      background: rgba(255,255,255,.06);
+      display:grid;
+      place-items:center;
+    }
+    .photo-frame img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:none;
+    }
+    .photo-glass{
+      position:absolute;
+      inset:0;
+      background: linear-gradient(120deg, transparent 0 55%, rgba(255,255,255,.14) 65%, transparent 78%);
+      pointer-events:none;
+    }
+
+    .preview-wrap{
+      margin-top:14px;
+      padding:14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.16);
+    }
+    .preview-title{
+      font-weight:800;
+      opacity:.9;
+      margin-bottom:8px;
+    }
+    .type-preview{
+      min-height:120px;
+      white-space:pre-wrap;
+      line-height:1.6;
+      font-size:16px;
+      opacity:.95;
+    }
+    .type-preview .cursor{
+      display:inline-block;
+      width:10px;
+      animation: blink .7s infinite;
+    }
+    @keyframes blink{
+      0%,100%{ opacity:0; }
+      50%{ opacity:1; }
+    }
+  </style>
+</body>
+</html>
